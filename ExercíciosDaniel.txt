@@ -1,0 +1,867 @@
+Hélio Abrahão de Paula - 26508 
+Ciência da Computação
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+// Exercício 1 - Sistema de Clínica Médica
+
+class Medico {
+    private int id;
+    private String nome;
+    private String especialidade;
+
+    public Medico(int id, String nome, String especialidade) {
+        this.id = id;
+        this.nome = nome;
+        this.especialidade = especialidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Medico{id=" + id + ", nome='" + nome + "', especialidade='" + especialidade + "'}";
+    }
+}
+
+class Paciente {
+    private int id;
+    private String nome;
+    private String cpf;
+
+    public Paciente(int id, String nome, String cpf) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{id=" + id + ", nome='" + nome + "', cpf='" + cpf + "'}";
+    }
+}
+
+class Consulta {
+    private LocalDateTime data;
+    private double valorDaConsulta;
+    private Medico medico;
+    private Paciente paciente;
+
+    public Consulta(LocalDateTime data, double valorDaConsulta, Medico medico, Paciente paciente) {
+        this.data = data;
+        this.valorDaConsulta = valorDaConsulta;
+        this.medico = medico;
+        this.paciente = paciente;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public double getValorDaConsulta() {
+        return valorDaConsulta;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public void setValorDaConsulta(double valorDaConsulta) {
+        this.valorDaConsulta = valorDaConsulta;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    @Override
+    public String toString() {
+        return "Consulta{data=" + data +
+                ", valorDaConsulta=" + valorDaConsulta +
+                ", medico=" + medico.getNome() +
+                ", paciente=" + paciente.getNome() + "}";
+    }
+}
+
+class TestaClinica {
+    public static void main(String[] args) {
+        Medico medico = new Medico(1, "Dr. Carlos", "Cardiologia");
+        Paciente paciente = new Paciente(1, "Maria Silva", "123.456.789-00");
+
+        Consulta consulta = new Consulta(
+                LocalDateTime.of(2026, 5, 20, 14, 30),
+                250.0,
+                medico,
+                paciente
+        );
+
+        System.out.println(medico);
+        System.out.println(paciente);
+        System.out.println(consulta);
+    }
+}
+
+// Exercício 2 - Sistema de Biblioteca
+
+class Leitor {
+    private int id;
+    private String nome;
+
+    public Leitor(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Leitor{id=" + id + ", nome='" + nome + "'}";
+    }
+}
+
+class Livro {
+    private int id;
+    private String titulo;
+    private String autor;
+
+    public Livro(int id, String titulo, String autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{id=" + id + ", titulo='" + titulo + "', autor='" + autor + "'}";
+    }
+}
+
+class Emprestimo {
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucaoPrevista;
+    private Leitor leitor;
+    private Livro livro;
+
+    public Emprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucaoPrevista, Leitor leitor, Livro livro) {
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+        this.leitor = leitor;
+        this.livro = livro;
+    }
+
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
+    }
+
+    public LocalDate getDataDevolucaoPrevista() {
+        return dataDevolucaoPrevista;
+    }
+
+    public Leitor getLeitor() {
+        return leitor;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
+        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+    }
+
+    public void setLeitor(Leitor leitor) {
+        this.leitor = leitor;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
+
+    @Override
+    public String toString() {
+        return "Emprestimo{leitor='" + leitor.getNome() +
+                "', livro='" + livro.getTitulo() +
+                "', dataEmprestimo=" + dataEmprestimo +
+                ", dataDevolucaoPrevista=" + dataDevolucaoPrevista + "}";
+    }
+}
+
+class TestaBiblioteca {
+    public static void main(String[] args) {
+        Leitor leitor = new Leitor(1, "João");
+        Livro livro = new Livro(1, "Dom Casmurro", "Machado de Assis");
+
+        Emprestimo emprestimo = new Emprestimo(
+                LocalDate.now(),
+                LocalDate.now().plusDays(7),
+                leitor,
+                livro
+        );
+
+        System.out.println(emprestimo);
+    }
+}
+
+// Exercício 3 - Time de Basquete
+
+class Atleta {
+    private int id;
+    private String nome;
+    private String posicao;
+
+    public Atleta(int id, String nome, String posicao) {
+        this.id = id;
+        this.nome = nome;
+        this.posicao = posicao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
+
+    @Override
+    public String toString() {
+        return "Atleta{id=" + id + ", nome='" + nome + "', posicao='" + posicao + "'}";
+    }
+}
+
+class Time {
+    private int id;
+    private String nome;
+    private String tecnico;
+    private ArrayList<Atleta> atletas;
+
+    public Time(int id, String nome, String tecnico) {
+        this.id = id;
+        this.nome = nome;
+        this.tecnico = tecnico;
+        this.atletas = new ArrayList<>();
+    }
+
+    public void contratarAtleta(Atleta a) {
+        atletas.add(a);
+    }
+
+    public void listarAtletas() {
+        System.out.println("Atletas do time " + nome + ":");
+        for (Atleta atleta : atletas) {
+            System.out.println(atleta);
+        }
+    }
+}
+
+class TestaTime {
+    public static void main(String[] args) {
+        Atleta atleta1 = new Atleta(1, "Lucas Dias", "Ala");
+        Atleta atleta2 = new Atleta(2, "Georginho", "Armador");
+
+        Time time = new Time(1, "Franca Basquete", "Helinho");
+        time.contratarAtleta(atleta1);
+        time.contratarAtleta(atleta2);
+
+        time.listarAtletas();
+
+        time = null;
+
+        System.out.println("\nTime foi anulado.");
+        System.out.println("Mas o atleta ainda existe:");
+        System.out.println(atleta1);
+    }
+}
+
+// Exercício 4 - Projeto de Software
+
+class Programador {
+    private int id;
+    private String nome;
+    private String linguagemPrincipal;
+
+    public Programador(int id, String nome, String linguagemPrincipal) {
+        this.id = id;
+        this.nome = nome;
+        this.linguagemPrincipal = linguagemPrincipal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getLinguagemPrincipal() {
+        return linguagemPrincipal;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setLinguagemPrincipal(String linguagemPrincipal) {
+        this.linguagemPrincipal = linguagemPrincipal;
+    }
+
+    @Override
+    public String toString() {
+        return "Programador{id=" + id + ", nome='" + nome + "', linguagemPrincipal='" + linguagemPrincipal + "'}";
+    }
+}
+
+class Projeto {
+    private int id;
+    private String nomeProjeto;
+    private ArrayList<Programador> programadores;
+
+    public Projeto(int id, String nomeProjeto) {
+        this.id = id;
+        this.nomeProjeto = nomeProjeto;
+        this.programadores = new ArrayList<>();
+    }
+
+    public void adicionarProgramador(Programador p) {
+        programadores.add(p);
+    }
+
+    public void listarProgramadores() {
+        System.out.println("Programadores do projeto " + nomeProjeto + ":");
+        for (Programador p : programadores) {
+            System.out.println(p);
+        }
+    }
+}
+
+class TestaProjeto {
+    public static void main(String[] args) {
+        Programador p1 = new Programador(1, "Ana", "Java");
+        Programador p2 = new Programador(2, "Bruno", "Python");
+
+        Projeto projeto = new Projeto(1, "Sistema Acadêmico");
+        projeto.adicionarProgramador(p1);
+        projeto.adicionarProgramador(p2);
+
+        projeto.listarProgramadores();
+    }
+}
+
+// Exercício 5 - Computador e Seus Componentes
+
+class Processador {
+    private String marca;
+    private String modelo;
+    private double frequencia;
+
+    public Processador(String marca, String modelo, double frequencia) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.frequencia = frequencia;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public double getFrequencia() {
+        return frequencia;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setFrequencia(double frequencia) {
+        this.frequencia = frequencia;
+    }
+
+    @Override
+    public String toString() {
+        return "Processador{marca='" + marca + "', modelo='" + modelo + "', frequencia=" + frequencia + "GHz}";
+    }
+}
+
+class Computador {
+    private int id;
+    private String marca;
+    private Processador processador;
+
+    public Computador(int id, String marca, String marcaProcessador, String modeloProcessador, double frequencia) {
+        this.id = id;
+        this.marca = marca;
+        this.processador = new Processador(marcaProcessador, modeloProcessador, frequencia);
+    }
+
+    @Override
+    public String toString() {
+        return "Computador{id=" + id + ", marca='" + marca + "', " + processador + "}";
+    }
+}
+
+class TestaComputador {
+    public static void main(String[] args) {
+        Computador computador = new Computador(1, "Dell", "Intel", "i7-12700", 3.6);
+        System.out.println(computador);
+
+        computador = null;
+        System.out.println("Computador deletado. Como o processador faz parte dele, ele também deixa de existir no sistema.");
+    }
+}
+
+// Exercício 6 - Edifício e Apartamentos
+
+class Apartamento {
+    private int numero;
+    private int andar;
+
+    public Apartamento(int numero, int andar) {
+        this.numero = numero;
+        this.andar = andar;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public int getAndar() {
+        return andar;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setAndar(int andar) {
+        this.andar = andar;
+    }
+
+    @Override
+    public String toString() {
+        return "Apartamento{numero=" + numero + ", andar=" + andar + "}";
+    }
+}
+
+class Edificio {
+    private String nome;
+    private String endereco;
+    private ArrayList<Apartamento> apartamentos;
+
+    public Edificio(String nome, String endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.apartamentos = new ArrayList<>();
+    }
+
+    public void construirApartamento(int num, int andar) {
+        Apartamento apartamento = new Apartamento(num, andar);
+        apartamentos.add(apartamento);
+    }
+
+    public void listarApartamentos() {
+        System.out.println("Apartamentos do edifício " + nome + ":");
+        for (Apartamento a : apartamentos) {
+            System.out.println(a);
+        }
+    }
+}
+
+class TestaEdificio {
+    public static void main(String[] args) {
+        Edificio edificio = new Edificio("Residencial Sol", "Rua Central, 100");
+        edificio.construirApartamento(101, 1);
+        edificio.construirApartamento(202, 2);
+        edificio.construirApartamento(303, 3);
+
+        edificio.listarApartamentos();
+    }
+}
+
+// Exercício 7 - Sistema de Vendas de Supermercado
+
+class Produto {
+    private int id;
+    private String nome;
+    private double preco;
+
+    public Produto(int id, String nome, double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{id=" + id + ", nome='" + nome + "', preco=" + preco + "}";
+    }
+}
+
+class Cliente {
+    private int id;
+    private String nome;
+
+    public Cliente(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{id=" + id + ", nome='" + nome + "'}";
+    }
+}
+
+class ItemVenda {
+    private int id;
+    private int quantidade;
+    private Produto produto;
+
+    public ItemVenda(int id, int quantidade, Produto produto) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.produto = produto;
+    }
+
+    public double calcularSubtotal() {
+        return quantidade * produto.getPreco();
+    }
+
+    @Override
+    public String toString() {
+        return "ItemVenda{id=" + id +
+                ", quantidade=" + quantidade +
+                ", produto=" + produto.getNome() +
+                ", subtotal=" + calcularSubtotal() + "}";
+    }
+}
+
+class Venda {
+    private int id;
+    private Cliente cliente;
+    private ArrayList<ItemVenda> itens;
+
+    public Venda(int id, Cliente cliente) {
+        this.id = id;
+        this.cliente = cliente;
+        this.itens = new ArrayList<>();
+    }
+
+    public void adicionarItem(int id, int quantidade, Produto produto) {
+        ItemVenda item = new ItemVenda(id, quantidade, produto);
+        itens.add(item);
+    }
+
+    public void listarVenda() {
+        System.out.println("Venda #" + id);
+        System.out.println("Cliente: " + cliente.getNome());
+        double total = 0;
+
+        for (ItemVenda item : itens) {
+            System.out.println(item);
+            total += item.calcularSubtotal();
+        }
+
+        System.out.println("Total da venda: " + total);
+    }
+}
+
+class TestaVenda {
+    public static void main(String[] args) {
+        Produto p1 = new Produto(1, "Arroz", 25.0);
+        Produto p2 = new Produto(2, "Feijão", 10.0);
+
+        Cliente cliente = new Cliente(1, "José");
+
+        Venda venda = new Venda(1, cliente);
+        venda.adicionarItem(1, 2, p1);
+        venda.adicionarItem(2, 3, p2);
+
+        venda.listarVenda();
+    }
+}
+
+// Exercício 8 - Sistema de Cine-Teatro
+
+class Filme {
+    private int id;
+    private String titulo;
+    private String genero;
+    private int duracao;
+
+    public Filme(int id, String titulo, String genero, int duracao) {
+        this.id = id;
+        this.titulo = titulo;
+        this.genero = genero;
+        this.duracao = duracao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    @Override
+    public String toString() {
+        return "Filme{id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", genero='" + genero + '\'' +
+                ", duracao=" + duracao + " min}";
+    }
+}
+
+class Ingresso {
+    private int id;
+    private String assento;
+    private String tipo;
+    private float preco;
+
+    public Ingresso(int id, String assento, String tipo, float preco) {
+        this.id = id;
+        this.assento = assento;
+        this.tipo = tipo;
+        this.preco = preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingresso{id=" + id +
+                ", assento='" + assento + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", preco=" + preco + "}";
+    }
+}
+
+class Sessao {
+    private int id;
+    private LocalDateTime horario;
+    private int sala;
+    private Filme filme;
+    private ArrayList<Ingresso> ingressos;
+
+    public Sessao(int id, LocalDateTime horario, int sala) {
+        this.id = id;
+        this.horario = horario;
+        this.sala = sala;
+        this.ingressos = new ArrayList<>();
+    }
+
+    public void vincularFilme(Filme f) {
+        this.filme = f;
+    }
+
+    public void venderIngresso(int id, String assento, String tipo, float preco) {
+        Ingresso ingresso = new Ingresso(id, assento, tipo, preco);
+        ingressos.add(ingresso);
+    }
+
+    @Override
+    public String toString() {
+        String texto = "Sessao{id=" + id +
+                ", horario=" + horario +
+                ", sala=" + sala +
+                ", filme=" + (filme != null ? filme.getTitulo() : "Nenhum") +
+                "}\nIngressos vendidos:\n";
+
+        for (Ingresso ingresso : ingressos) {
+            texto += ingresso + "\n";
+        }
+
+        return texto;
+    }
+}
+
+class TestaCinema {
+    public static void main(String[] args) {
+        Filme filme1 = new Filme(1, "Batman", "Ação", 176);
+        Filme filme2 = new Filme(2, "Duna", "Ficção Científica", 155);
+
+        Sessao sessao = new Sessao(
+                1,
+                LocalDateTime.of(2026, 7, 20, 20, 0),
+                1
+        );
+
+        sessao.vincularFilme(filme1);
+
+        sessao.venderIngresso(1, "A1", "Inteira", 40.0f);
+        sessao.venderIngresso(2, "A2", "Meia", 20.0f);
+        sessao.venderIngresso(3, "A3", "Inteira", 40.0f);
+
+        System.out.println(sessao);
+    }
+}
