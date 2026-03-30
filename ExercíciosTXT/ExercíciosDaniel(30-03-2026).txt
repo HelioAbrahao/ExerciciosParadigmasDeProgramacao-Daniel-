@@ -1,0 +1,219 @@
+Hélio Abrahão de Paula - 26508
+Ciência da Computação
+Repositório: https://github.com/HelioAbrahao/ExerciciosParadigmasDeProgramacao-Daniel-
+
+Exercício 1
+
+public class Veiculo {
+    protected String marca;
+    protected String modelo;
+    protected float velocidade;
+
+    public Veiculo(String marca, String modelo, float velocidade) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.velocidade = velocidade;
+    }
+
+    public void mover() {
+        System.out.println("Veículo se movendo...");
+    }
+
+    public void abastecer() {
+        System.out.println("Veículo reabastecendo...");
+    }
+}
+
+public class Aviao extends Veiculo {
+    private float altitudeMax;
+
+    public Aviao(String marca, String modelo, float velocidade, float altitudeMax) {
+        super(marca, modelo, velocidade);
+        this.altitudeMax = altitudeMax;
+    }
+
+    @Override
+    public void mover() {
+        System.out.println("Avião voando a " + velocidade + " km/h e " + altitudeMax + " metros");
+    }
+
+    @Override
+    public void abastecer() {
+        System.out.println("Abastecendo com querosene de aviação");
+    }
+}
+
+public class CarroEletrico extends Veiculo {
+    private int autonomiaBateria;
+
+    public CarroEletrico(String marca, String modelo, float velocidade, int autonomiaBateria) {
+        super(marca, modelo, velocidade);
+        this.autonomiaBateria = autonomiaBateria;
+    }
+
+    @Override
+    public void mover() {
+        System.out.println("Carro elétrico movendo-se silenciosamente");
+    }
+
+    @Override
+    public void abastecer() {
+        System.out.println("Recarregando bateria em posto de carga rápida");
+    }
+}
+
+public class TesteVeiculo {
+    public static void main(String[] args) {
+        Aviao aviao = new Aviao("Boeing", "747", 900.0f, 12000.0f);
+        CarroEletrico carro = new CarroEletrico("Tesla", "Model 3", 120.0f, 450);
+
+        aviao.mover();
+        aviao.abastecer();
+
+        carro.mover();
+        carro.abastecer();
+
+        System.out.println();
+
+        Veiculo v;
+
+        v = aviao;
+        v.mover();
+
+        v = carro;
+        v.mover();
+    }
+}
+
+
+Exercício 2
+
+public class Desenvolvedor {
+    protected String nome;
+    protected double salarioBase;
+
+    public Desenvolvedor(String nome, double salarioBase) {
+        this.nome = nome;
+        this.salarioBase = salarioBase;
+    }
+
+    public void codar() {
+        System.out.println(nome + " está codando...");
+    }
+
+    public double calcularBonus() {
+        return salarioBase * 0.05;
+    }
+
+    @Override
+    public String toString() {
+        return "Desenvolvedor{" +
+                "nome='" + nome + '\'' +
+                ", salarioBase=" + salarioBase +
+                '}';
+    }
+}
+
+public class Junior extends Desenvolvedor {
+
+    public Junior(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public void codar() {
+        System.out.println(nome + " está codando com supervisão.");
+    }
+
+    @Override
+    public double calcularBonus() {
+        return salarioBase * 0.10;
+    }
+
+    @Override
+    public String toString() {
+        return "Junior{" +
+                "nome='" + nome + '\'' +
+                ", salarioBase=" + salarioBase +
+                ", bonus=" + calcularBonus() +
+                '}';
+    }
+}
+
+public class Pleno extends Desenvolvedor {
+
+    public Pleno(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public void codar() {
+        System.out.println(nome + " está codando com autonomia.");
+    }
+
+    @Override
+    public double calcularBonus() {
+        return salarioBase * 0.15;
+    }
+
+    @Override
+    public String toString() {
+        return "Pleno{" +
+                "nome='" + nome + '\'' +
+                ", salarioBase=" + salarioBase +
+                ", bonus=" + calcularBonus() +
+                '}';
+    }
+}
+
+public class Senior extends Desenvolvedor {
+
+    public Senior(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public void codar() {
+        System.out.println(nome + " está codando e orientando a equipe.");
+    }
+
+    @Override
+    public double calcularBonus() {
+        return salarioBase * 0.20;
+    }
+
+    @Override
+    public String toString() {
+        return "Senior{" +
+                "nome='" + nome + '\'' +
+                ", salarioBase=" + salarioBase +
+                ", bonus=" + calcularBonus() +
+                '}';
+    }
+}
+
+public class Senior extends Desenvolvedor {
+
+    public Senior(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public void codar() {
+        System.out.println(nome + " está codando e orientando a equipe.");
+    }
+
+    @Override
+    public double calcularBonus() {
+        return salarioBase * 0.20;
+    }
+
+    @Override
+    public String toString() {
+        return "Senior{" +
+                "nome='" + nome + '\'' +
+                ", salarioBase=" + salarioBase +
+                ", bonus=" + calcularBonus() +
+                '}';
+    }
+}
