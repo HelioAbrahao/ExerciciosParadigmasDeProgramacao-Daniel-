@@ -20,15 +20,6 @@ Cada pasta é independente e pode conter seu próprio conjunto de arquivos-fonte
 - **Linguagem**: Java
 - **IDE**: (preencher, ex: IntelliJ, Eclipse, VS Code)
 
-## Como compilar e rodar
-
-```bash
-javac NomeDaClasse.java
-java NomeDaClasse
-```
-
-Para projetos com Maven ou Gradle, verificar se há `pom.xml` ou `build.gradle` dentro da pasta específica e usar os comandos correspondentes (`mvn compile` / `gradle build`).
-
 ## Observações
 
 Os códigos foram desenvolvidos com fins acadêmicos, como parte das atividades e avaliações da disciplina.
@@ -60,15 +51,6 @@ Each folder is self-contained and may hold its own set of source files, dependin
 
 - **Language**: Java
 - **IDE**: (fill in, e.g., IntelliJ, Eclipse, VS Code)
-
-## How to compile and run
-
-```bash
-javac ClassName.java
-java ClassName
-```
-
-For projects using Maven or Gradle, check for a `pom.xml` or `build.gradle` inside the specific folder and use the corresponding commands (`mvn compile` / `gradle build`).
 
 ## Notes
 
